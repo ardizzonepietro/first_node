@@ -19,3 +19,7 @@ response.send("<h1>ciao client sei in home<h1>"); //risposta con anche tgag html
 
 })    //cio che do quando contatto il server (risosrsa, fuunction) in questo caso è la all
 
+apiServer.get("/nome", (request, response)=>{
+     console.log("richiesta nome");
+    response.send("<p1>Ardizzone Pietro<p1>"); 
+    })   
