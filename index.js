@@ -27,3 +27,7 @@ apiServer.get("/mioNome", (request, response) => {
     console.log(request.query.nome);
     response.send("ciao, il mio nome è: "+request.query.nome);
 })   //prendo la stringa dall'urla di variabile nome
+apiServer.get("/somma", (request, response) => {
+    console.log("somma: "+request.query.nome);
+    response.send("risultato: "+(request.query.a-(-request.query.b)));
+})   //prendo la stringa dall'urla di variabile nome
