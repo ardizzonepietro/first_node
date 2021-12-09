@@ -53,3 +53,24 @@ apiServer.get("/student", (request, response) => {
         }
     });
 })  
+apiServer.get("/newStudent", (request, response) => {
+    fs.readFile("studenti.json", (err, data) => {
+        if(err){
+            console.log(err);
+        }else{
+            var studente= {"name": request.query.name, "surname":request.query.surname, "id":request.query.id};
+           // var students = JSON.parse(data);
+           
+            
+            fs.writeFile("studenti.json", JSON.stringify(studente), err =>{
+                if(err){
+                console.log(err);
+                }
+            });
+
+            
+        }
+    });
+   
+    
+})  
