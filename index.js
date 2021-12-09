@@ -6,6 +6,7 @@ var apiServer = express();
 var a = 5;
 var b = "3";
 console.log(a+b); */
+var fs=require("fs");
 var port = 3000;
 var host = "localhost";
 apiServer.listen(port, host, () => {
@@ -31,3 +32,16 @@ apiServer.get("/somma", (request, response) => {
     console.log("somma: "+request.query.nome);
     response.send("risultato: "+(request.query.a-(-request.query.b)));
 })   //prendo la stringa dall'urla di variabile nome
+//api restitusice studente dall id
+apiServer.get("/student", (request, response) => {
+    //console.log("studente id: "+request.query.id);
+    //leggere nel file
+    fs.readFile("studenti.json", (err, data) => {
+        if(err){
+            console.log(err);
+        }else{
+            var students = JSON.parse(data);
+            console.log("Studente: "+students[0].surname);
+        }
+    });
+})  
