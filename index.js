@@ -34,14 +34,22 @@ apiServer.get("/somma", (request, response) => {
 })   //prendo la stringa dall'urla di variabile nome
 //api restitusice studente dall id
 apiServer.get("/student", (request, response) => {
-    //console.log("studente id: "+request.query.id);
+    console.log("studente id: "+request.query.id);
     //leggere nel file
     fs.readFile("studenti.json", (err, data) => {
         if(err){
             console.log(err);
         }else{
             var students = JSON.parse(data);
-            console.log("Studente: "+students[0].surname);
+            for (let index = 0; index < students.length; index++) {
+            if(students[index].id==request.query.id){
+                response.send("nome: "+students[index].name
+                +"</br>cognome: "+students[index].surname
+                +"</br>id: "+students[index].id
+                );
+            }
+            }
+            
         }
     });
 })  
